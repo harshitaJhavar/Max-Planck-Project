@@ -45,7 +45,7 @@ with open("storygraph_v2.csv",'w') as resultFile:
         Character_1 = []
 
         for i in range(lengthDependencyList):
-            if (dependencyList[i][1] == 'nsubj' or dependencyList[i][1] == 'nsubjpass'):
+            if (dependencyList[i][1] == 'nsubj'or dependencyList[i][1] == 'nmod' ):
                 if(dependencyList[i][2][1] == 'NNP' or dependencyList[i][2][1] == 'NNS' or dependencyList[i][2][1] == 'NN'):
                     #Removed PRP here
                     Character_1.append(dependencyList[i][2][0])
@@ -54,7 +54,7 @@ with open("storygraph_v2.csv",'w') as resultFile:
         #Finding Object Characters
         for i in range(lengthDependencyList):
             #Finding Associated objects and their actions
-            if (dependencyList[i][1] == 'dobj' or dependencyList[i][1] == 'nmod'):
+            if (dependencyList[i][1] == 'dobj' or dependencyList[i][1] == 'nsubjpass'):
                 if(dependencyList[i][2][1] == 'NNP' or dependencyList[i][2][1] == 'NNS' or dependencyList[i][2][1] == 'NN'):
                     #Removed PRP here
                     actionsAssociatedWithObjects.append(dependencyList[i][2][0] + ":" + dependencyList[i][0][0])
